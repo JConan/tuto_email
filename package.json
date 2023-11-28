@@ -25,6 +25,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"the-new-css-reset": "^1.11.2"
+		"@types/nodemailer": "^6.4.14",
+		"nodemailer": "^6.9.7",
+		"the-new-css-reset": "^1.11.2",
+		"zod": "^3.22.4"
 	}
 }

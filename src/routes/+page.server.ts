@@ -1,5 +1,7 @@
 import { MAILBOX_LOGIN } from "$env/static/private";
-
+import { fail } from "@sveltejs/kit";
+import { EmailDataSchema, sendMail } from "../lib/server/nodemailer.js";
+import { ZodError } from "zod";
 
 export async function load() {
     return {
@@ -10,12 +12,26 @@ export async function load() {
 export const actions = {
     default: async ({ request }) => {
         const formData = await request.formData()
+        const contact = formData.get('contact')!.toString()
         const title = formData.get('title')!.toString()
         const content = formData.get('content')!.toString()
-        await new Promise(resolve => setTimeout(resolve, 1000))
 
-        return {
-            success: true
+        try {
+            const emailData = EmailDataSchema.parse({
+                contact, title, content
+            })
+            await sendMail(emailData)
+            await new Promise(resolve => setTimeout(resolve, 1000))
+            return {
+                success: true
+            }
+        } catch (e) {
+            if (e instanceof ZodError) {
+                return fail(400, { success: false, errors: e.formErrors.fieldErrors })
+            } else {
+                console.dir(e, { depth: null })
+                return fail(500, { success: false, message: 'Internal error' })
+            }
         }
     }
 }

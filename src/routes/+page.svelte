@@ -3,11 +3,6 @@
     import "the-new-css-reset/css/reset.css";
     export let data;
     export let form;
-
-    const sample = {
-        title: "hello message",
-        content: `This is a demo message for testing purpose.\nThe message should be sent to the contact email address.`,
-    };
     let submitting = false;
 </script>
 
@@ -30,10 +25,23 @@
                 };
             }}
         >
+            <label for="title">Contact:</label>
+            <input type="text" id="contact" name="contact" />
+            {#if form?.errors?.contact}
+                <span>{form?.errors?.contact}</span>
+            {/if}
+
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value={sample.title} />
+            <input type="text" id="title" name="title" />
+            {#if form?.errors?.title}
+                <span>{form?.errors?.title}</span>
+            {/if}
+
             <label for="content">Content:</label>
-            <textarea id="content" name="content" value={sample.content} />
+            <textarea id="content" name="content" />
+            {#if form?.errors?.content}
+                <span>{form?.errors?.content}</span>
+            {/if}
 
             <input
                 type="submit"
@@ -73,6 +81,7 @@
             textarea {
                 border: 1px solid lightgray;
                 border-radius: 5px;
+                padding: 0.3rem;
             }
             & textarea {
                 height: 200px;
@@ -83,13 +92,18 @@
                 text-align: center;
                 border-color: darkred;
                 color: darkred;
-                padding: 0.3rem;
                 box-shadow: 4px 4px black;
 
                 &:active {
                     transform: translate(4px, 4px);
                     box-shadow: unset;
                 }
+            }
+            & span {
+                color: red;
+                text-align: right;
+                font-size: 14px;
+                padding: 0.3rem;
             }
         }
     }
