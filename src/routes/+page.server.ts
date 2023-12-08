@@ -1,6 +1,6 @@
 import { MAILBOX_LOGIN } from "$env/static/private";
 import { fail } from "@sveltejs/kit";
-import { EmailDataSchema, sendMail } from "../lib/server/nodemailer.js";
+import { EmailDataSchema, sendTestMail } from "$lib/server/Email";
 import { ZodError } from "zod";
 
 export async function load() {
@@ -20,7 +20,7 @@ export const actions = {
             const emailData = EmailDataSchema.parse({
                 contact, title, content
             })
-            await sendMail(emailData)
+            await sendTestMail(emailData)
             await new Promise(resolve => setTimeout(resolve, 1000))
             return {
                 success: true
