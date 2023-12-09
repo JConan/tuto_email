@@ -1,10 +1,15 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+</script>
+
 <div id="page">
 	<header>
 		<ul>
 			<li><a href="/">Home</a></li>
+			<li><a href="/contact">Contact</a></li>
 		</ul>
 	</header>
-	<main>
+	<main class={$page.url.pathname.replaceAll('/', '_')}>
 		<slot />
 	</main>
 </div>
@@ -19,6 +24,15 @@
 		height: 100%;
 	}
 
+	:global(a) {
+		color: blue;
+		text-decoration: none;
+
+		&:hover {
+			color: darkred;
+		}
+	}
+
 	#page {
 		display: flex;
 		flex-direction: column;
@@ -27,6 +41,11 @@
 			display: flex;
 			padding: 0.5rem;
 			align-items: center;
+			list-style: none;
+
+			& li {
+				margin: 0 0.5rem;
+			}
 		}
 
 		& main {
