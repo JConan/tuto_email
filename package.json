@@ -11,23 +11,22 @@
 		"lint": "eslint ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^1.0.0-next.90",
-		"@sveltejs/kit": "^1.0.0-next.587",
-		"@typescript-eslint/eslint-plugin": "^5.45.0",
-		"@typescript-eslint/parser": "^5.45.0",
-		"eslint": "^8.28.0",
-		"eslint-plugin-svelte3": "^4.0.0",
-		"svelte": "^3.54.0",
-		"svelte-check": "^2.9.2",
-		"tslib": "^2.4.1",
-		"typescript": "^4.9.3",
-		"vite": "^4.0.0"
-	},
-	"type": "module",
-	"dependencies": {
+		"@sveltejs/adapter-auto": "^1.0.3",
+		"@sveltejs/adapter-vercel": "^3.1.0",
+		"@sveltejs/kit": "^1.27.7",
 		"@types/nodemailer": "^6.4.14",
+		"@typescript-eslint/eslint-plugin": "^5.62.0",
+		"@typescript-eslint/parser": "^5.62.0",
+		"eslint": "^8.55.0",
+		"eslint-plugin-svelte3": "^4.0.0",
 		"nodemailer": "^6.9.7",
+		"svelte": "^3.59.2",
+		"svelte-check": "^2.10.3",
 		"the-new-css-reset": "^1.11.2",
+		"tslib": "^2.6.2",
+		"typescript": "^4.9.5",
+		"vite": "^4.5.1",
 		"zod": "^3.22.4"
-	}
+	},
+	"type": "module"
 }
