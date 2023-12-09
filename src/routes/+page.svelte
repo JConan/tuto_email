@@ -6,54 +6,50 @@
 	let submitting = false;
 </script>
 
-<main>
-	<h1>Send a mail to {data.contactAddress}</h1>
+<h1>Send a mail to {data.contactAddress}</h1>
 
-	{#if form?.success}
-		<p>Message envoyé avec succès</p>
-		<p>
-			<a href="/">Nouveau message</a>
-		</p>
-	{:else}
-		<form
-			method="post"
-			use:enhance={() => {
-				submitting = true;
-				return async ({ result }) => {
-					submitting = false;
-					await applyAction(result);
-				};
-			}}
-		>
-			<label for="title">Contact:</label>
-			<input type="text" id="contact" name="contact" />
-			{#if form?.errors?.contact}
-				<span>{form?.errors?.contact}</span>
-			{/if}
+{#if form?.success}
+	<p>Message envoyé avec succès</p>
+	<p>
+		<a href="/">Nouveau message</a>
+	</p>
+{:else}
+	<form
+		method="post"
+		use:enhance={() => {
+			submitting = true;
+			return async ({ result }) => {
+				submitting = false;
+				await applyAction(result);
+			};
+		}}
+	>
+		<label for="title">Contact:</label>
+		<input type="text" id="contact" name="contact" />
+		{#if form?.errors?.contact}
+			<span>{form?.errors?.contact}</span>
+		{/if}
 
-			<label for="title">Title:</label>
-			<input type="text" id="title" name="title" />
-			{#if form?.errors?.title}
-				<span>{form?.errors?.title}</span>
-			{/if}
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title" />
+		{#if form?.errors?.title}
+			<span>{form?.errors?.title}</span>
+		{/if}
 
-			<label for="content">Content:</label>
-			<textarea id="content" name="content" />
-			{#if form?.errors?.content}
-				<span>{form?.errors?.content}</span>
-			{/if}
+		<label for="content">Content:</label>
+		<textarea id="content" name="content" />
+		{#if form?.errors?.content}
+			<span>{form?.errors?.content}</span>
+		{/if}
 
-			<input type="submit" value={submitting ? 'envoie en cours...' : 'envoyer'} />
-		</form>
-	{/if}
-</main>
+		<input type="submit" value={submitting ? 'envoie en cours...' : 'envoyer'} />
+	</form>
+{/if}
 
 <style>
-	main {
-		font-family: 'Roboto', sans-serif;
-		margin: auto;
+	:global(main) {
 		margin-top: 2rem;
-		width: 500px;
+		padding: 0 25%;
 		& h1 {
 			font-size: 24px;
 			text-decoration: underline;
