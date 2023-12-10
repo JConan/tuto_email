@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import 'the-new-css-reset/css/reset.css';
 </script>
 
 <div id="page">

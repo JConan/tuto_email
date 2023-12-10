@@ -1,6 +1,5 @@
 <script>
 	import { applyAction, enhance } from '$app/forms';
-	import 'the-new-css-reset/css/reset.css';
 	export let data;
 	export let form;
 	let submitting = false;
