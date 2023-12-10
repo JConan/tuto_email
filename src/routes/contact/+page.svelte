@@ -100,4 +100,23 @@
 			}
 		}
 	}
+	@media (max-width: 1024px) {
+		:global(main._contact) {
+			padding: 5% 10%;
+		}
+	}
+	@media (max-width: 768px) {
+		:global(main._contact) {
+			padding: 0.75rem 0.75rem;
+		}
+		:global(main._contact h1) {
+			font-size: 20px;
+		}
+		:global(main._contact label) {
+			font-size: 14px;
+		}
+		:global(main._contact span) {
+			font-size: 10px;
+		}
+	}
 </style>

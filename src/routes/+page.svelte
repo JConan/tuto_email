@@ -13,6 +13,16 @@
 
 <style>
 	:global(main._) {
-		padding: 5% 35%;
+		padding: 5% 25%;
+	}
+	@media (max-width: 1024px) {
+		:global(main._) {
+			padding: 5% 10%;
+		}
+	}
+	@media (max-width: 768px) {
+		:global(main._) {
+			padding: 0.75rem 0.75rem;
+		}
 	}
 </style>
