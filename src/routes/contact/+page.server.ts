@@ -1,6 +1,6 @@
 import { MAILBOX_LOGIN } from '$env/static/private';
 import { fail } from '@sveltejs/kit';
-import { EmailDataSchema, sendTestMail } from '$lib/server/Email';
+import { EmailDataSchema, sendTestMail } from '$lib/server/email';
 import { ZodError } from 'zod';
 
 export async function load() {
